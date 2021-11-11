@@ -1,4 +1,8 @@
-# WHMCS Container with PHP 7.4 and OpenLitespeed
+# ComputeStacks WHMCS Container
+
+**PHP 7.4 and OpenLitespeed**
+
+[![Docker](https://github.com/ComputeStacks/cs-docker-whmcs/actions/workflows/docker.yml/badge.svg)](https://github.com/ComputeStacks/cs-docker-whmcs/actions/workflows/docker.yml)
 
 ```bash
 
