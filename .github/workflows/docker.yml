@@ -35,7 +35,7 @@ jobs:
       - name: Build and push WHMCS
         uses: docker/build-push-action@v2
         with:
-          context: 7.4-litespeed/
+          context: .
           platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
