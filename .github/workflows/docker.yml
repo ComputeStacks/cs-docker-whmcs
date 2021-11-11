@@ -42,4 +42,4 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             cmptstks/whmcs:php7.4-litespeed
-            ccmptstks/whmcs:latest
+            cmptstks/whmcs:latest
