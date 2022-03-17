@@ -2,7 +2,7 @@
 
 **PHP 7.4 and OpenLitespeed**
 
-[![Docker](https://github.com/ComputeStacks/cs-docker-whmcs/actions/workflows/docker.yml/badge.svg)](https://github.com/ComputeStacks/cs-docker-whmcs/actions/workflows/docker.yml)
+[![gitlab ci](https://git.cmptstks.com/cs-public/images/whmcs/badges/main/pipeline.svg)](https://git.cmptstks.com/cs-public/images/whmcs/-/jobs)
 
 ```bash
 
@@ -19,3 +19,13 @@ docker run --rm -it \
   -p 7080:7080 \
   cmptstks/whmcs:php7.4-litespeed /sbin/my_init -- bash -l
 ```
+  
+## Submitting Issues
+
+You may open an issue on our gitlab instance, [here](https://git.cmptstks.com/cs-public/images/whmcs/-/issues). However, for questions or how-to's, please [post on our forum](https://forum.computestacks.com).
+
+
+## Contributing
+
+Contributions are welcome! Before you submit a pull request, feel free to [post on our forum](https://forum.computestacks.com) your idea and we can have a discussion.
+
