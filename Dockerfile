@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.source="https://git.cmptstks.com/cs-public/images
 LABEL org.opencontainers.image.url="https://git.cmptstks.com/cs-public/images/whmcs"
 LABEL org.opencontainers.image.title="WHMCS with OpenLiteSpeed"
 
-COPY 05-whmcs.sh /etc/my_init.d/
+COPY 51-whmcs.sh /etc/my_init.d/
 COPY root/vhosts /usr/src/lsws/conf/vhosts/
 COPY whmcs_v841_full.zip /usr/src/whmcs.zip
 
@@ -21,7 +21,7 @@ RUN set -ex; \
       && mkdir /usr/src/whmcs/whmcs-updates \
       && mkdir /usr/src/whmcs/whmcs-private \
       && mkdir /usr/src/whmcs/log \
-      && chmod +x /etc/my_init.d/05-whmcs.sh \
+      && chmod +x /etc/my_init.d/51-whmcs.sh \
     ; \
     sed -i 's/  map                     Default/  map                     WHMCS/g' /usr/src/lsws/conf/httpd_config.conf; \
     echo '\n\
