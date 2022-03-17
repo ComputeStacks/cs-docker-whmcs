@@ -1,15 +1,15 @@
 # docker run --rm -it -e LS_ADMIN_PW=changeme -p 3000:80 -p 7080:7080 cmptstks/whmcs:php7.4-litespeed /sbin/my_init -- bash -l
-FROM cmptstks/php:7.4-litespeed
+FROM cr.cmptstks.com/cs-public/images/php:7.4-litespeed
 
-LABEL maintainer="https://github.com/ComputeStacks"
-LABEL org.opencontainers.image.authors="https://github.com/ComputeStacks"
-LABEL org.opencontainers.image.source="https://github.com/ComputeStacks/cs-docker-whmcs"
-LABEL org.opencontainers.image.url="https://github.com/ComputeStacks/cs-docker-whmcs"
+LABEL maintainer="https://computestacks.com"
+LABEL org.opencontainers.image.authors="https://computestacks.com"
+LABEL org.opencontainers.image.source="https://git.cmptstks.com/cs-public/images/whmcs"
+LABEL org.opencontainers.image.url="https://git.cmptstks.com/cs-public/images/whmcs"
 LABEL org.opencontainers.image.title="WHMCS with OpenLiteSpeed"
 
 COPY 05-whmcs.sh /etc/my_init.d/
 COPY root/vhosts /usr/src/lsws/conf/vhosts/
-COPY whmcs_v831_full.zip /usr/src/whmcs.zip
+COPY whmcs_v841_full.zip /usr/src/whmcs.zip
 
 RUN set -ex; \
     unzip -d /usr/src/ /usr/src/whmcs.zip \

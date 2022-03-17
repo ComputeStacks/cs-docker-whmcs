@@ -1,0 +1,42 @@
+# will never run on a git push or merge request event.
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: never
+    - when: always
+    
+variables:
+    FULL_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA-$CI_PIPELINE_ID
+    IMAGE_TAG: php7.4-litespeed
+    DH_IMAGE: cmptstks/whmcs
+
+default:
+  tags:
+    - shell
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY --username $CI_REGISTRY_USER --password-stdin
+    - echo "$DH_PW" | docker login -u $DH_USER --password-stdin
+  after_script:
+    - docker logout $CI_REGISTRY
+    - docker logout
+
+build:
+  stage: build
+  script:
+    - "docker build -t $FULL_IMAGE ."
+deploy:
+  stage: deploy
+  needs: 
+    - build
+  script:
+    - "docker tag $FULL_IMAGE $CI_REGISTRY_IMAGE:$IMAGE_TAG"
+    - "docker tag $FULL_IMAGE $CI_REGISTRY_IMAGE:latest"
+    - "docker tag $FULL_IMAGE $DH_IMAGE:$IMAGE_TAG"
+    - "docker tag $FULL_IMAGE $DH_IMAGE:latest"
+    - "docker push $FULL_IMAGE"
+    - "docker push $CI_REGISTRY_IMAGE:latest"
+    - "docker push $CI_REGISTRY_IMAGE:$IMAGE_TAG"
+    - "docker push $DH_IMAGE:$IMAGE_TAG"
+    - "docker push $DH_IMAGE:latest"
