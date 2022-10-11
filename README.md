@@ -2,7 +2,7 @@
 
 **PHP 7.4 and OpenLitespeed**
 
-[![gitlab ci](https://git.cmptstks.com/cs-public/images/whmcs/badges/main/pipeline.svg)](https://git.cmptstks.com/cs-public/images/whmcs/-/jobs)
+[![Build Image](https://github.com/ComputeStacks/cs-docker-whmcs/actions/workflows/build-image.yml/badge.svg)](https://github.com/ComputeStacks/cs-docker-whmcs/actions/workflows/build-image.yml)
 
 ```bash
 
@@ -22,7 +22,7 @@ docker run --rm -it \
   
 ## Submitting Issues
 
-You may open an issue on our gitlab instance, [here](https://git.cmptstks.com/cs-public/images/whmcs/-/issues). However, for questions or how-to's, please [post on our forum](https://forum.computestacks.com).
+If you encounter a technical issue, you may [open an issue](https://github.com/ComputeStacks/cs-docker-whmcs/issues). However, for questions or how-to's, please [post on our forum](https://forum.computestacks.com).
 
 
 ## Contributing
