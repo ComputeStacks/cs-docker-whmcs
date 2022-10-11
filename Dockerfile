@@ -1,5 +1,5 @@
 # docker run --rm -it -e LS_ADMIN_PW=changeme -p 3000:80 -p 7080:7080 cmptstks/whmcs:php7.4-litespeed /sbin/my_init -- bash -l
-FROM cr.cmptstks.com/cs-public/images/php:7.4-litespeed
+FROM cscr.cc/cs-public/images/php:7.4-litespeed
 
 LABEL maintainer="https://computestacks.com"
 LABEL org.opencontainers.image.authors="https://computestacks.com"
@@ -9,12 +9,12 @@ LABEL org.opencontainers.image.title="WHMCS with OpenLiteSpeed"
 
 COPY 51-whmcs.sh /etc/my_init.d/
 COPY root/vhosts /usr/src/lsws/conf/vhosts/
-COPY whmcs_v841_full.zip /usr/src/whmcs.zip
+COPY whmcs_v851_full.zip /usr/src/whmcs.zip
 
 RUN set -ex; \
     unzip -d /usr/src/ /usr/src/whmcs.zip \
       && mv /usr/src/whmcs /usr/src/whmcs-public \
-      && mkdir /usr/src/whmcs \  
+      && mkdir /usr/src/whmcs \
       && mv /usr/src/whmcs-public /usr/src/whmcs/ \
       && echo "#*/5 * * * * www-data /usr/local/lsws/lsphp74/bin/php -q /var/www/html/whmcs/whmcs-public/crons/cron.php" >> /usr/src/default/crontab \
       && echo "#*/5 * * * * www-data /usr/local/lsws/lsphp74/bin/php -q /var/www/html/whmcs/whmcs-public/crons/cron.php do --TicketEscalations" >> /usr/src/default/crontab \
