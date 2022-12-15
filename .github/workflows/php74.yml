@@ -1,12 +1,9 @@
-name: Build Image
+name: PHP 7.4
 
 on:
   schedule:
     - cron: '15 22 * * 2'
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
 
 env:
   # The default repo env will be 'ComputeStacks'; uppercase is not allowed.
@@ -46,12 +43,10 @@ jobs:
         id: build-and-push
         uses: docker/build-push-action@v3
         with:
-          context: .
+          context: php7.4/
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             cmptstks/whmcs:php7.4-litespeed
-            cmptstks/whmcs:latest
             ghcr.io/${{ env.GH_REPO }}:php7.4-litespeed
-            ghcr.io/${{ env.GH_REPO }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
